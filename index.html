@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaria Data Analysis Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebar-toggle">Menu</button>
+    
+    <div class="sidebar" id="sidebar">
+        <h3>Course Navigation</h3>
+        <ul>
+            <li class="menu-item">
+                <a href="#week1">📅 Week 1: Introduction</a>
+                <ul class="sub-menu">
+                    <li><a href="#install">Installing R & RStudio</a></li>
+                    <li><a href="#syntax">Basic R Syntax</a></li>
+                    <li><a href="#markdown">R Markdown</a></li>
+                    <li><a href="#datasets">Reading Datasets</a></li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#exercises">📌 Week 1: Exercises</a>
+                <ul class="sub-menu">
+                    <li><a href="#ex-syntax">Basic Syntax Exercises</a></li>
+                    <li><a href="#ex-markdown">R Markdown Exercises</a></li>
+                    <li><a href="#ex-data">Data Reading Exercises</a></li>
+                    <li><a href="#ex-bonus">Bonus Challenge</a></li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#solutions">📌 Week 1: Solutions</a>
+                <ul class="sub-menu">
+                    <li><a href="#sol-syntax">Syntax Solutions</a></li>
+                    <li><a href="#sol-markdown">Markdown Solutions</a></li>
+                    <li><a href="#sol-data">Data Solutions</a></li>
+                    <li><a href="#sol-bonus">Bonus Solution</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h1 id="week1">📅 Week 1: Introduction to R & RStudio for Malaria Data Analysis</h1>
+        
+        <p>This week, we will:<br>
+        ✅ <strong>Set up R and RStudio</strong><br>
+        ✅ <strong>Learn basic R syntax</strong><br>
+        ✅ <strong>Use R Markdown for documentation</strong><br>
+        ✅ <strong>Read malaria datasets (CSV, Excel) into R step by step</strong></p>
+        
+        <hr>
+        
+        <h2 id="install">1️⃣ Installing R and RStudio</h2>
+        
+        <h3>Why Use R and RStudio?</h3>
+        <p>✔ <strong>R</strong> is a powerful language for <strong>data analysis, statistics, and visualization</strong>.<br>
+        ✔ <strong>RStudio</strong> makes working with R easier by providing a user-friendly interface.</p>
+        
+        <h3>Step 1: Install R</h3>
+        <ol>
+            <li>Go to <a href="https://cran.r-project.org/" target="_blank">CRAN</a></li>
+            <li>Download and install R for your operating system</li>
+        </ol>
+        
+        <h3>Step 2: Install RStudio</h3>
+        <ol>
+            <li>Go to <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit</a></li>
+            <li>Download <strong>RStudio Desktop</strong> and install it</li>
+        </ol>
+        
+        <h3>Step 3: Open RStudio</h3>
+        <p>When you open RStudio, you'll see:<br>
+        📌 <strong>Console</strong> – Run R commands interactively<br>
+        📌 <strong>Script Editor</strong> – Write and save R scripts (<code>.R</code> files)<br>
+        📌 <strong>Environment Pane</strong> – View variables and datasets<br>
+        📌 <strong>Plots Pane</strong> – Display graphs and tables</p>
+        
+        <hr>
+        
+        <h2 id="syntax">2️⃣ Basic R Syntax</h2>
+        
+        <h3>Step 1: Assigning Variables</h3>
+        <div class="r-code">
+            <code>
+cases <- 150          # Number of malaria cases<br>
+fatality_rate <- 4.2  # Fatality rate in percentage<br>
+region <- "West"      # Region name (text)<br>
+outbreak <- TRUE      # Logical value (Boolean)
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>cases <- 150</code> assigns <code>150</code> to <code>cases</code><br>
+            ✔ <code>fatality_rate <- 4.2</code> stores <code>4.2</code> in <code>fatality_rate</code><br>
+            ✔ <code>region <- "West"</code> stores <code>"West"</code> as a text string<br>
+            ✔ <code>outbreak <- TRUE</code> stores a <strong>Boolean</strong> value (TRUE/FALSE)</p>
+        </div>
+        
+        <hr>
+        
+        <h3>Step 2: Checking Data Types</h3>
+        <div class="r-code">
+            <code>
+class(cases)          # Output: "numeric"<br>
+class(region)         # Output: "character"<br>
+class(outbreak)       # Output: "logical"
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>class()</code> function shows the data type of each variable<br>
+            ✔ <code>"numeric"</code> means numbers<br>
+            ✔ <code>"character"</code> means text<br>
+            ✔ <code>"logical"</code> means <strong>TRUE or FALSE</strong></p>
+        </div>
+        
+        <hr>
+        
+        <h3>Step 3: Basic Operators</h3>
+        <div class="r-code">
+            <code>
+total_cases <- cases + 50   # Adding 50 more cases<br>
+fatalities <- cases * (fatality_rate / 100)  # Calculating fatalities<br>
+recovered <- cases - fatalities  # Subtracting fatalities from total cases
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>cases + 50</code> adds 50 cases<br>
+            ✔ <code>cases * (fatality_rate / 100)</code> converts percentage to decimal and calculates fatalities<br>
+            ✔ <code>cases - fatalities</code> finds the number of recovered patients</p>
+        </div>
+        
+        <hr>
+        
+        <h2 id="markdown">3️⃣ R Markdown for Documentation</h2>
+        
+        <h3>What is R Markdown?</h3>
+        <p>📌 <strong>R Markdown</strong> lets you create <strong>reports, notebooks, and presentations</strong> with <strong>text, R code, and results</strong> in one document.</p>
+        
+        <h3>Step 1: Install R Markdown</h3>
+        <div class="r-code">
+            <code>
+install.packages("rmarkdown")  # Installs R Markdown package
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>install.packages("rmarkdown")</code> installs the package to generate documents in <strong>HTML, PDF, or Word</strong></p>
+        </div>
+        
+        <hr>
+        
+        <h3>Step 2: Create an R Markdown File</h3>
+        <ol>
+            <li>Open <strong>RStudio</strong></li>
+            <li>Click <strong>File → New File → R Markdown</strong></li>
+            <li>Select <strong>HTML, PDF, or Word output format</strong></li>
+            <li>Click <strong>OK</strong></li>
+        </ol>
+        
+        <hr>
+        
+        <h3>Step 3: Writing R Markdown Code</h3>
+        <div class="r-code">
+            <code>
+# Malaria Data Analysis<br><br>
+
+This document presents an analysis of malaria cases.<br><br>
+
+```{r}<br>
+summary(cases)  # Shows summary statistics of 'cases'<br>
+```
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>#</code> starts a <strong>comment</strong><br>
+            ✔ <code>summary(cases)</code> calculates <strong>min, max, mean, and median</strong> of <code>cases</code><br>
+            ✔ Text outside <code>{r}</code> is normal text in the report</p>
+            <p>📌 Click <strong>Knit</strong> in RStudio to generate an <strong>HTML, PDF, or Word</strong> document.</p>
+        </div>
+        
+        <hr>
+        
+        <h2 id="datasets">4️⃣ Reading Malaria Datasets (CSV, Excel) in R</h2>
+        
+        <h3>Why Read External Data?</h3>
+        <p>📌 Malaria data is stored in <strong>CSV (Comma-Separated Values) or Excel</strong> files.<br>
+        📌 We use <strong><code>readr</code></strong> and <strong><code>readxl</code></strong> to load these files into R.</p>
+        
+        <hr>
+        
+        <h3>Step 1: Install Required Packages</h3>
+        <div class="r-code">
+            <code>
+install.packages("readr")   # Install readr package for CSV files<br>
+install.packages("readxl")  # Install readxl package for Excel files
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>install.packages("readr")</code> installs <code>readr</code> (for CSV files)<br>
+            ✔ <code>install.packages("readxl")</code> installs <code>readxl</code> (for Excel files)</p>
+        </div>
+        
+        <hr>
+        
+        <h3>📂 4.1 Reading CSV Files with <code>readr</code></h3>
+        <div class="r-code">
+            <code>
+library(readr)  # Load readr package<br><br>
+
+# Read malaria data from a CSV file<br>
+malaria_data <- read_csv("malaria_cases.csv")<br><br>
+
+# View first few rows<br>
+head(malaria_data)
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>library(readr)</code> loads the <strong><code>readr</code></strong> package<br>
+            ✔ <code>read_csv("malaria_cases.csv")</code> reads the CSV file into a <strong>dataframe</strong><br>
+            ✔ <code>malaria_data</code> stores the <strong>imported dataset</strong><br>
+            ✔ <code>head(malaria_data)</code> shows the <strong>first 6 rows</strong> of the dataset</p>
+        </div>
+        
+        <hr>
+        
+        <h3>📂 4.2 Reading Excel Files with <code>readxl</code></h3>
+        <div class="r-code">
+            <code>
+library(readxl)  # Load readxl package<br><br>
+
+# Read malaria data from an Excel file<br>
+malaria_data_excel <- read_excel("malaria_cases.xlsx", sheet = 1)<br><br>
+
+# View first few rows<br>
+head(malaria_data_excel)
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>library(readxl)</code> loads the <strong><code>readxl</code></strong> package<br>
+            ✔ <code>read_excel("malaria_cases.xlsx", sheet = 1)</code> reads <strong>Sheet 1</strong> of the Excel file<br>
+            ✔ <code>malaria_data_excel</code> stores the <strong>imported dataset</strong><br>
+            ✔ <code>head(malaria_data_excel)</code> shows the <strong>first 6 rows</strong></p>
+        </div>
+        
+        <hr>
+        
+        <h3>📌 4.3 Writing Data to CSV and Excel</h3>
+        
+        <h4>Saving as CSV</h4>
+        <div class="r-code">
+            <code>
+write_csv(malaria_data, "cleaned_malaria_data.csv")
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>write_csv(malaria_data, "cleaned_malaria_data.csv")</code> saves <strong><code>malaria_data</code></strong> as a CSV file</p>
+        </div>
+        
+        <hr>
+        
+        <h4>Saving as Excel</h4>
+        <div class="r-code">
+            <code>
+install.packages("writexl")  # Install writexl package<br>
+library(writexl)  # Load writexl<br><br>
+
+write_xlsx(malaria_data, "cleaned_malaria_data.xlsx")
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h4>🔍 Explanation:</h4>
+            <p>✔ <code>install.packages("writexl")</code> installs <strong><code>writexl</code></strong> for writing Excel files<br>
+            ✔ <code>library(writexl)</code> loads the <strong><code>writexl</code></strong> package<br>
+            ✔ <code>write_xlsx(malaria_data, "cleaned_malaria_data.xlsx")</code> saves data as an <strong>Excel file</strong></p>
+        </div>
+        
+        <hr>
+        
+        <h2>✅ Summary of Week 1</h2>
+        <p>By the end of this week, you should:<br>
+        ✔ <strong>Install R and RStudio</strong><br>
+        ✔ <strong>Understand basic R syntax</strong> (variables, operators)<br>
+        ✔ <strong>Use R Markdown for documentation</strong><br>
+        ✔ <strong>Read and write malaria datasets (CSV, Excel)</strong></p>
+        
+        <hr>
+        
+        <h1 id="exercises">📌 Week 1: Exercises – Introduction to R & RStudio for Malaria Data Analysis</h1>
+        
+        <p>These exercises will help you practice <strong>basic R syntax, data types, and reading/writing malaria datasets.</strong> Try them step by step.</p>
+        
+        <hr>
+        
+        <div class="exercise-section">
+            <h2 id="ex-syntax">1️⃣ Basic R Syntax and Operations</h2>
+            <p>Create variables related to malaria cases and perform simple calculations.</p>
+            
+            <h3>Exercise 1.1: Assign Values</h3>
+            <p>🔹 <strong>Create the following variables in R:</strong><br>
+            - <code>total_cases</code> = <strong>500</strong> (Total malaria cases)<br>
+            - <code>fatality_rate</code> = <strong>3.5</strong> (Fatality rate in percentage)<br>
+            - <code>region</code> = <strong>"North"</strong> (Name of the region)<br>
+            - <code>outbreak</code> = <strong>TRUE</strong> (Logical value indicating outbreak status)</p>
+            
+            <p>✍ <strong>Write the R code to assign these values.</strong></p>
+            
+            <hr>
+            
+            <h3>Exercise 1.2: Check Data Types</h3>
+            <p>🔹 <strong>Use <code>class()</code> to check the data type of each variable created above.</strong></p>
+            
+            <p><strong>Example Output:</strong></p>
+            <pre><code>[1] "numeric"
+[1] "character"
+[1] "logical"</code></pre>
+            
+            <p>✍ <strong>Write the R code to check the types.</strong></p>
+            
+            <hr>
+            
+            <h3>Exercise 1.3: Perform Calculations</h3>
+            <p>Using the variables created earlier, calculate:</p>
+            <ol>
+                <li><strong>Estimated fatalities</strong>:<br>
+                <code>fatalities = total_cases × (fatality_rate / 100)</code></li>
+                <li><strong>Recovered cases</strong>:<br>
+                <code>recovered = total_cases - fatalities</code></li>
+            </ol>
+            
+            <p>✍ <strong>Write the R code to calculate these values.</strong></p>
+        </div>
+        
+        <div class="exercise-section">
+            <h2 id="ex-markdown">2️⃣ Using R Markdown</h2>
+            
+            <h3>Exercise 2.1: Install and Load R Markdown</h3>
+            <p>🔹 <strong>Write the R command to install and load the <code>rmarkdown</code> package.</strong></p>
+            
+            <hr>
+            
+            <h3>Exercise 2.2: Create an R Markdown File</h3>
+            <ol>
+                <li><strong>In RStudio</strong>, go to <strong>File → New File → R Markdown</strong></li>
+                <li><strong>Choose</strong> an output format (<strong>HTML, PDF, or Word</strong>)</li>
+                <li><strong>Write a short summary</strong> about malaria cases in your document</li>
+                <li><strong>Include an R code chunk</strong> that displays the summary of <code>total_cases</code></li>
+            </ol>
+            
+            <p>✍ <strong>Follow the steps and create your first R Markdown document!</strong></p>
+        </div>
+        
+        <div class="exercise-section">
+            <h2 id="ex-data">3️⃣ Reading and Writing Data (CSV, Excel)</h2>
+            
+            <h3>Exercise 3.1: Install and Load Data Packages</h3>
+            <p>🔹 <strong>Write the R commands to install and load <code>readr</code> and <code>readxl</code>.</strong></p>
+            
+            <hr>
+            
+            <h3>Exercise 3.2: Read a CSV File</h3>
+            <p>Suppose you have a malaria dataset <strong><code>malaria_data.csv</code></strong> with the following columns:</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>Cases</th>
+                            <th>Fatalities</th>
+                            <th>Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>North</td>
+                            <td>500</td>
+                            <td>20</td>
+                            <td>480</td>
+                        </tr>
+                        <tr>
+                            <td>South</td>
+                            <td>300</td>
+                            <td>10</td>
+                            <td>290</td>
+                        </tr>
+                        <tr>
+                            <td>East</td>
+                            <td>700</td>
+                            <td>35</td>
+                            <td>665</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p><strong>Write the R code to:</strong></p>
+            <ol>
+                <li>Load the <strong><code>readr</code></strong> package</li>
+                <li>Read the <strong>CSV file</strong> into a dataframe called <code>malaria_df</code></li>
+                <li>Display the <strong>first 6 rows</strong> of the dataframe</li>
+            </ol>
+            
+            <hr>
+            
+            <h3>Exercise 3.3: Read an Excel File</h3>
+            <p>If the same data is in <strong><code>malaria_data.xlsx</code> (Sheet 1)</strong>, <strong>write the R code</strong> to:</p>
+            <ol>
+                <li>Load the <strong><code>readxl</code></strong> package</li>
+                <li>Read the <strong>Excel file</strong> into a dataframe called <code>malaria_excel_df</code></li>
+                <li>Display the <strong>first 6 rows</strong></li>
+            </ol>
+            
+            <hr>
+            
+            <h3>Exercise 3.4: Write Data to CSV and Excel</h3>
+            <p>After analyzing the malaria dataset, save it as:</p>
+            <ol>
+                <li><strong>CSV file</strong>: <code>"processed_malaria_data.csv"</code></li>
+                <li><strong>Excel file</strong>: <code>"processed_malaria_data.xlsx"</code></li>
+            </ol>
+            
+            <p><strong>Write the R code to do this!</strong></p>
+        </div>
+        
+        <div class="exercise-section">
+            <h2 id="ex-bonus">4️⃣ Bonus Challenge: Automate CSV Import</h2>
+            <p>🔹 <strong>Write an R script that:</strong></p>
+            <ol>
+                <li><strong>Asks the user</strong> for a CSV file path</li>
+                <li><strong>Loads the dataset</strong></li>
+                <li><strong>Displays summary statistics</strong></li>
+                <li><strong>Saves the cleaned dataset as a new CSV file</strong></li>
+            </ol>
+            
+            <p>📌 <strong>Hint:</strong> Use <code>read_csv()</code>, <code>summary()</code>, and <code>write_csv()</code>.</p>
+            
+            <h3>💡 What's Next?</h3>
+            <p>✔ Try these exercises in RStudio<br>
+            ✔ If you have questions, ask for hints!<br>
+            ✔ Get ready for <strong>Week 2: Data Cleaning & Visualization!</strong> 🚀</p>
+        </div>
+        
+        <hr>
+        
+        <h1 id="solutions">📌 Week 1: Solution scripts – Introduction to R & RStudio for Malaria Data Analysis</h1>
+        <p>Here are the <strong>solutions</strong> for the Week 1 exercises:</p>
+        
+        <hr>
+        
+        <div class="solution-section">
+            <h2 id="sol-syntax">1️⃣ Basic R Syntax and Operations</h2>
+            
+            <h3>Exercise 1.1: Assign Values</h3>
+            <div class="r-code">
+                <code>
+# Assigning values to variables<br>
+total_cases <- 500<br>
+fatality_rate <- 3.5<br>
+region <- "North"<br>
+outbreak <- TRUE
+                </code>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 1.2: Check Data Types</h3>
+            <div class="r-code">
+                <code>
+# Check the data types of the variables<br>
+class(total_cases)     # numeric<br>
+class(fatality_rate)   # numeric<br>
+class(region)          # character<br>
+class(outbreak)        # logical
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- <code>class()</code> returns the data type of the variable.</p>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 1.3: Perform Calculations</h3>
+            <div class="r-code">
+                <code>
+# Calculating fatalities and recovered cases<br>
+fatalities <- total_cases * (fatality_rate / 100)<br>
+recovered <- total_cases - fatalities<br>
+<br>
+# Displaying the results<br>
+fatalities<br>
+recovered
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- The formula for fatalities is <code>total_cases * (fatality_rate / 100)</code>.<br>
+                - The formula for recovered cases is <code>total_cases - fatalities</code>.</p>
+            </div>
+        </div>
+        
+        <div class="solution-section">
+            <h2 id="sol-markdown">2️⃣ Using R Markdown</h2>
+            
+            <h3>Exercise 2.1: Install and Load R Markdown</h3>
+            <div class="r-code">
+                <code>
+# Installing and loading the rmarkdown package<br>
+install.packages("rmarkdown")<br>
+library(rmarkdown)
+                </code>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 2.2: Create an R Markdown File</h3>
+            
+            <p>1. Open RStudio and go to <strong>File → New File → R Markdown</strong>.<br>
+            2. Choose the output format (HTML, PDF, Word).<br>
+            3. Write the following example R Markdown document content:</p>
+            
+            <div class="r-code">
+                <code>
+---<br>
+title: "Malaria Data Summary"<br>
+output: html_document<br>
+---<br>
+<br>
+## Malaria Cases Summary<br>
+<br>
+The total malaria cases in the region are `r total_cases`.<br>
+The fatality rate is `r fatality_rate`.<br>
+The total fatalities are calculated as `r fatalities`.<br>
+                </code>
+            </div>
+            
+            <p>4. Click <strong>Knit</strong> to generate the HTML output.</p>
+        </div>
+        
+        <div class="solution-section">
+            <h2 id="sol-data">3️⃣ Reading and Writing Data (CSV, Excel)</h2>
+            
+            <h3>Exercise 3.1: Install and Load Data Packages</h3>
+            <div class="r-code">
+                <code>
+# Installing and loading the necessary packages<br>
+install.packages("readr")<br>
+install.packages("readxl")<br>
+<br>
+library(readr)<br>
+library(readxl)
+                </code>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 3.2: Read a CSV File</h3>
+            <div class="r-code">
+                <code>
+# Reading the CSV file into a dataframe<br>
+malaria_df <- read_csv("malaria_data.csv")<br>
+<br>
+# Displaying the first 6 rows of the dataframe<br>
+head(malaria_df)
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- <code>read_csv()</code> reads CSV files into a dataframe.<br>
+                - <code>head()</code> displays the first 6 rows of the dataframe.</p>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 3.3: Read an Excel File</h3>
+            <div class="r-code">
+                <code>
+# Reading the Excel file into a dataframe<br>
+malaria_excel_df <- read_excel("malaria_data.xlsx", sheet = 1)<br>
+<br>
+# Displaying the first 6 rows of the dataframe<br>
+head(malaria_excel_df)
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- <code>read_excel()</code> reads Excel files into a dataframe.<br>
+                - <code>sheet = 1</code> specifies the sheet to read (sheet 1).</p>
+            </div>
+            
+            <hr>
+            
+            <h3>Exercise 3.4: Write Data to CSV and Excel</h3>
+            <div class="r-code">
+                <code>
+# Writing data to a CSV file<br>
+write_csv(malaria_df, "processed_malaria_data.csv")<br>
+<br>
+# Writing data to an Excel file<br>
+write.xlsx(malaria_df, "processed_malaria_data.xlsx")
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- <code>write_csv()</code> saves the dataframe as a CSV file.<br>
+                - <code>write.xlsx()</code> saves the dataframe as an Excel file.</p>
+            </div>
+        </div>
+        
+        <div class="solution-section">
+            <h2 id="sol-bonus">4️⃣ Bonus Challenge: Automate CSV Import</h2>
+            
+            <div class="r-code">
+                <code>
+# Asking the user for the file path<br>
+file_path <- readline(prompt = "Enter the path to the CSV file: ")<br>
+<br>
+# Reading the dataset from the provided path<br>
+malaria_data <- read_csv(file_path)<br>
+<br>
+# Displaying summary statistics<br>
+summary(malaria_data)<br>
+<br>
+# Saving the cleaned data to a new CSV file<br>
+write_csv(malaria_data, "cleaned_malaria_data.csv")
+                </code>
+            </div>
+            
+            <div class="explanation">
+                <h4>Explanation:</h4>
+                <p>- <code>readline()</code> is used to ask the user for input (file path).<br>
+                - <code>summary()</code> gives the summary statistics of the dataset.<br>
+                - <code>write_csv()</code> saves the dataframe as a CSV file.</p>
+            </div>
+            
+            <h3>💡 Additional Notes:</h3>
+            <p>- Make sure that the paths to the files are correct, and if you're reading from an Excel file, ensure that the <code>readxl</code> library is loaded.<br>
+            - If you get errors when trying to install packages, make sure you have an active internet connection, and the R version is up-to-date.</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
